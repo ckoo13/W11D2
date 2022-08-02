@@ -1,6 +1,6 @@
-import { ids } from "webpack";
 import { RECEIVE_TODOS } from "../actions/todo_actions";
 import { RECEIVE_TODO } from "../actions/todo_actions";
+import { REMOVE_TODO } from "../actions/todo_actions";
 
 //sample state
 const initialState = {
@@ -41,6 +41,10 @@ const todosReducer = (state = initialState, action) => {
             // Return a new state object by merging your previous state and your
             // new object
             nextState[action.todo.id] = action.todo;
+            return nextState;
+
+        case REMOVE_TODO:
+            delete nextState[action.todo.id];
             return nextState;
     
         default:
